@@ -367,6 +367,30 @@ namespace Thetis
 
         [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetCATPort(int port);
+        // --- HL2 (MI0BOT) interop additions ---
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetDiscoveryBoardType(int boardType); // MI0BOT: pass board type down
 
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetTxLatency(int txLatency);          // MI0BOT: HW TX latency (HL2)
+
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetPttHang(int pttHang);              // MI0BOT: HW PTT hang (HL2)
+
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetResetOnDisconnect(int bit);        // MI0BOT: reset on link drop
+
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int I2CReadInitiate(int bus, int address, int control);            // HL2 I2C
+
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int I2CWriteInitiate(int bus, int address, int control, int data); // HL2 I2C
+
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int I2CWrite(int bus, int address, int control, int data);         // HL2 I2C
+
+        [DllImport("ChannelMaster.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int I2CResponse(byte[] read_data);                                 // HL2 I2C
+                                                                                                // --- end HL2 additions ---
     }
 }
